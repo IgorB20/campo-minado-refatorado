@@ -3,6 +3,6 @@
 
 #include "./Tile.h";
 
-    void showField( Tile field [][] );
+    void showField( Tile** field);
 
 #endif
