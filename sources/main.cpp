@@ -2,9 +2,8 @@
 #include <time.h>
 #include <vector>
 #include <cstdlib>
-/*
-    Autores: Igor Benedet e Felipe de Negredo
-*/
+#include "../headers/Game.h"
+
 
 using namespace std;
 
@@ -13,27 +12,36 @@ using namespace std;
 
 int main()
 {
+    
     int linhas,colunas,bombs,jogadas = 0,x,y;
     bool endGame = false;
+    Game game;
+
+    cout<<"Insira o numero de linhas e colunas"<<endl;
+    cin >> game.field.lines >> game.field.columns;
+    cout << game.field.lines << endl;
+    return 0;
     srand(time(NULL));
 
-    while(linhas<=1 || colunas<=1)
-    {
-        cout<<"Insira o numero de linhas e colunas"<<endl;
-        cin>>linhas>>colunas;
-        //entrada de linhas e colunas
-        if (linhas>=2 && colunas>=2)
-        {
-            cout<<"Insira o numero de bombas"<<endl; //entrada de número de bombas
-            cin>>bombs;
-            while(bombs<2) //mínimo de tamanho e de bombas
-            {
+    // while(linhas<=1 || colunas<=1)
+    // {
+    //     cout<<"Insira o numero de linhas e colunas"<<endl;
+    //     cin>>linhas>>colunas;
+    //     //entrada de linhas e colunas
+    //     if (linhas>=2 && colunas>=2)
+    //     {
+    //         cout<<"Insira o numero de bombas"<<endl; //entrada de número de bombas
+    //         cin>>bombs;
+    //         while(bombs<2) //mínimo de tamanho e de bombas
+    //         {
                
-                cout<<"Insira o numero de bombas"<<endl; //entrada de número de bombas
-                cin>>bombs;
-            }
-        }
-    }
+    //             cout<<"Insira o numero de bombas"<<endl; //entrada de número de bombas
+    //             cin>>bombs;
+    //         }
+    //     }
+    // }
+
+
     char field[linhas][colunas];
     char bombs_positions[linhas][colunas];
 

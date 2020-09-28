@@ -1,9 +1,12 @@
 #ifndef LIB_CAMPO_MINADO
 #define LIB_CAMPO_MINADO
 
+#include "./Field.h";
 #include "./Tile.h";
 
-    void generateField();
+    void init();
+
+    void generateField( Field** field ); //inicializa a matriz de tiles
 
     void generateBombs();
 
