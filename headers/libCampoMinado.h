@@ -1,18 +1,26 @@
 #ifndef LIB_CAMPO_MINADO
 #define LIB_CAMPO_MINADO
 
-#include "./Field.h";
-#include "./Tile.h";
+#include "./Field.h"
+#include "./Tile.h"
+#include "./Game.h"
+#include "./Position.h"
 
-    void init();
+    void init(Game &game);
 
-    void generateField( Field** field ); //inicializa a matriz de tiles
+    void startMainLoop(Game &game);
 
-    void generateBombs();
+    void generateField( Field &field );
 
-    void showField( Tile** field );//recebe matriz de tiles
+    void generateBombs( Field &field );
 
-    void showRevealedField( Tile** field );
+    void setCoordinatesBombsAroundAmount( Field &field );
+
+    void showField( Field field );
+
+    void showRevealedField( Field field );
+
+    void getUserInput();
 
     bool checkGameOver(); //se usuário clicou em uma bomba
 
