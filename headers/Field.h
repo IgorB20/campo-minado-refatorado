@@ -7,7 +7,6 @@ struct Field{
    int columns;
    int bombsAmount;
    Tile tiles[100][100]; //matriz de Tiles
-   char* teste;
 };
 
 #endif

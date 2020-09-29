@@ -16,32 +16,55 @@ void init(Game &game)
     generateBombs(game.field);
     setCoordinatesBombsAroundAmount(game.field);
     showField(game.field);
+    startMainLoop(game);
 }
 
 void startMainLoop(Game &game){
     Position position;
     do
     {
-        cout<<"Insira as linhas e colunas que voce vai jogar"<<endl;
-        cin>>position.x >> position.y; //entrada das coordenadas das jogadas
+        getUserInput(position, game);
         game.playsAmount++;
+
+        if(checkGameOver(game.field, position)){
+            cout << "PERDEU!!" << endl;
+            game.endGame = true;
+            break;
+        }
+
+        if(checkVictory(game)){
+            cout << "GANHOU!!" << endl;
+            game.endGame = true;
+            break;
+        }
         game.field.tiles[position.x][position.y].revealed = true;
 
         showField(game.field);
-
-        //CONFERIR DERROTA
-        
-
-        //CONFERIR VITÓRIA
-      
-
-        //MOSTRAR CAMPO REVELADO
        
 
     }
     while(!game.endGame);
 
     showRevealedField(game.field);
+}
+
+void getUserInput(Position &position, Game game){
+   cout<<"Insira as linhas e colunas que voce vai jogar"<<endl;
+   cin>>position.x >> position.y; //entrada das coordenadas das jogadas
+   while(validateUserInput(position, game) == false){
+       cout<<"Insira novamente as linhas e colunas que voce vai jogar"<<endl;
+       cin>>position.x >> position.y;
+   }
+}
+
+bool validateUserInput(Position position, Game game){
+    if(game.field.tiles[position.x][position.y].revealed){
+        cout << "Coordenada ja jogada!! Tente novamente" << endl; 
+        return false;
+    }
+   
+
+    return true;
 }
 
 void generateField(Field &field)
@@ -110,10 +133,12 @@ void showField(Field field)
     {
         for (int j = 0; j < field.columns; j++)
         {
-          if(field.tiles[i][j].isBomb){
-            cout << "x ";
-          }else{
+          if(field.tiles[i][j].revealed){
+             
             cout << field.tiles[i][j].bombsAroundAmount << " ";
+              
+          }else{
+              cout << "- ";
           }
           
         }
@@ -136,3 +161,13 @@ void showField(Field field)
         cout << endl;
     }
  }
+
+bool checkGameOver( Field field, Position position ){
+    if(field.tiles[position.x][position.y].isBomb) return true;
+    return false;
+} 
+
+bool checkVictory(Game game){
+    if(game.playsAmount == (game.field.lines * game.field.columns) - game.field.bombsAmount) return true;
+    return false;
+}

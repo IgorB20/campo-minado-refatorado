@@ -20,11 +20,13 @@
 
     void showRevealedField( Field field );
 
-    void getUserInput();
+    void getUserInput(Position &position, Game game);
 
-    bool checkGameOver(); //se usuário clicou em uma bomba
+    bool validateUserInput(Position position, Game game);
 
-    bool checkVictory(); //se usuário revelou todas as posições sem bomba
+    bool checkGameOver( Field field, Position position ); //se usuário clicou em uma bomba
+
+    bool checkVictory(Game game); //se usuário revelou todas as posições sem bomba
 
 
 #endif
