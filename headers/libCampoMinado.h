@@ -5,10 +5,18 @@
 #include "./Tile.h"
 #include "./Game.h"
 #include "./Position.h"
+#include <iostream>
+#include <time.h>
+#include <string>
+
+using namespace std;
+
 
     void init(Game &game);
 
     void startMainLoop(Game &game);
+    
+    void showFinalMessage(Game game,  string message);
 
     void generateField( Field &field );
 
