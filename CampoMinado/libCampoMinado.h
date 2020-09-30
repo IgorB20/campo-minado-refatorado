@@ -3,20 +3,38 @@
 
 #include "./Field.h"
 #include "./Tile.h"
+#include "./Game.h"
+#include "./Position.h"
+#include <iostream>
+#include <time.h>
+#include <string>
 
-    void init();
+using namespace std;
 
-    void generateField( Field** field ); //inicializa a matriz de tiles
 
-    void generateBombs();
+    void init(Game &game);
 
-    void showField( Tile** field );//recebe matriz de tiles
+    void startMainLoop(Game &game);
 
-    void showRevealedField( Tile** field );
+    void showFinalMessage(Game game,  string message);
 
-    bool checkGameOver(); //se usuário clicou em uma bomba
+    void generateField( Field &field );
 
-    bool checkVictory(); //se usuário revelou todas as posições sem bomba
+    void generateBombs( Field &field );
+
+    void setCoordinatesBombsAroundAmount( Field &field );
+
+    void showField( Field field );
+
+    void showRevealedField( Field field );
+
+    void getUserInput(Position &position, Game game);
+
+    bool validateUserInput(Position position, Game game);
+
+    bool checkGameOver( Field field, Position position ); //se usuário clicou em uma bomba
+
+    bool checkVictory(Game game); //se usuário revelou todas as posições sem bomba
 
 
 #endif

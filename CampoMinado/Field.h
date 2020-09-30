@@ -5,7 +5,8 @@
 struct Field{
    int lines;
    int columns;
-   Tile** tiles; //matriz de Tiles
+   int bombsAmount;
+   Tile tiles[100][100]; //matriz de Tiles
 };
 
 #endif
